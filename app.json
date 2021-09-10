@@ -1,7 +1,9 @@
 {
   "expo": {
-    "name": "CSPR-tracker",
-    "slug": "CSPR-tracker",
+    "name": "CSPR Server Tracker",
+    "slug": "CSPR-server-tracker",
+    "privacy": "public",
+    "description": "An application to keep track of the status of CSPR server.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,6 +22,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "ttpc.csprservertracker",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
