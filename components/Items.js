@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 const Item = ({ id, IP, onDelete }) => {
     
     const [status, setStatus] = useState(1);
+    const [blockHeight, setBlockHeight] = useState("");
     // 0 - active
     // 1 - not active
 
@@ -21,10 +22,13 @@ const Item = ({ id, IP, onDelete }) => {
         .then(response =>{
             return response.json()
         }).then(data => {
+          // console.log(data)
             if(data.chainspec_name == "casper"){
-                console.log("return true")
+                // console.log("return true")
+                setBlockHeight(data.last_added_block_info.height);
                 return true;
             }else{
+              setBlockHeight("");
               return false;
             }
         }).catch(response => {
@@ -56,7 +60,7 @@ const Item = ({ id, IP, onDelete }) => {
         <Text style={styles.completeCircle}>
             <Icon name={icons[status].name} size={30} color={icons[status].color} />
         </Text>
-        <Text style={{ fontSize: 15 }}>{IP} </Text>
+        <Text style={{ fontSize: 15 }}>{IP} { (blockHeight != "") ? "-" : ""  } {blockHeight}</Text>
       </View>
       <TouchableOpacity activeOpacity={0.5} onPress={() => onDelete(id)}>
         <Icon style={styles.delete} name="delete" size={30} color="#e33057"/>
